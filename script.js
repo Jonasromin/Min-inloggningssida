@@ -1,8 +1,13 @@
-let myDiv = document.getElementById("myDiv");
+let loginDiv = document.createElement("div");
+let welcomeDiv = document.createElement("div");
+let errorDiv = document.createElement("div");
+
+loginDiv.id = "loginDiv";
+welcomeDiv.id = "welcomeDiv";
+errorDiv.id = "errorDiv";
+
 let correctUser = "test";
 let correctPassword = "1234";
-let userName = document.getElementById("user");
-let userPassword = document.getElementById("password");
 
 /*HTML element*/
 let br = document.createElement("br");
@@ -68,8 +73,8 @@ fieldSet.appendChild(myBtn)
 fieldSet.appendChild(br)
 fieldSet.appendChild(loginBackground)
 
-myDiv.appendChild(fieldSet)
-document.body.appendChild(myDiv)
+loginDiv.appendChild(fieldSet)
+document.body.appendChild(loginDiv)
 
 };
 
@@ -80,12 +85,12 @@ function myWelcomePage(){
     h3.innerHTML = "Vill du logga ut?";
     myBtn.innerHTML = "Logga ut";
 
-    myDiv.appendChild(h1)
-    myDiv.appendChild(welcome)
-    myDiv.appendChild(h3)
-    myDiv.appendChild(myBtn)
+    welcomeDiv.appendChild(h1)
+    welcomeDiv.appendChild(welcome)
+    welcomeDiv.appendChild(h3)
+    welcomeDiv.appendChild(myBtn)
 
-    document.body.appendChild(myDiv)
+    document.body.appendChild(welcomeDiv)
 };
 /*Funktion som samlar ihop felmeddelandesidans HTML element och ändrar text med innerHTML*/
 function myErrorPage (){
@@ -94,13 +99,13 @@ function myErrorPage (){
     h3.innerHTML = "Vill du gå tillbaka?"
     myBtn.innerHTML = "Tillbaka"
 
-    myDiv.appendChild(h1)
-    myDiv.appendChild(h3)
-    myDiv.appendChild(myBtn)
-    myDiv.appendChild(br)
-    myDiv.appendChild(oops)
+    errorDiv.appendChild(h1)
+    errorDiv.appendChild(h3)
+    errorDiv.appendChild(myBtn)
+    errorDiv.appendChild(br)
+    errorDiv.appendChild(oops)
 
-    document.body.appendChild(myDiv)
+    document.body.appendChild(errorDiv)
 
 };
 /*If else som visar de olika sidorna beroende på argument då sidan öppnas */
@@ -113,29 +118,35 @@ else if(localStorage.length === 2){
     myWelcomePage();
 };
 
-
     myBtn.addEventListener("click", function(){
         
+        if (myBtn.innerHTML === "Logga in"){
+            let user = document.getElementById("user").value;
+            let password = document.getElementById("password").value;
 
-        if (myBtn.innerHTML === "Tillbaka"){
-            myLoginPage();
+            if (user === correctUser && password === correctPassword){
+                localStorage.setItem("user", user);
+                localStorage.setItem("password", password);
+                loginDiv.removeChild(fieldSet)
+                myWelcomePage()
+            }
         }
         
         else if (myBtn.innerHTML === "Logga ut"){
+            document.body.removeChild(welcomeDiv)
+            myBtn.innerHTML = "Logga in"
             localStorage.clear();
             myLoginPage();
-        }
-        else if (myBtn.innerHTML === "Logga in"){
             
+        }
+        else if (myBtn.innerHTML === "Logga in" && user === correctUser && password === correctPassword){
+            
+            loginDiv.removeChild(fieldSet);
+            localStorage.setItem("user", user);
+            localStorage.setItem("password", password);
             console.log("event", user, password);
             myWelcomePage();
         }
-        else {
-            myErrorPage();
-        }
         
-
         
-    
-
-    }); 
+        });
