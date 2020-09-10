@@ -119,7 +119,7 @@ else if(localStorage.length === 2){
 };
 
     myBtn.addEventListener("click", function(){
-        
+        /*If sats för att visa välkomstsida efter rätt inloggning*/
         if (myBtn.innerHTML === "Logga in"){
             let user = document.getElementById("user").value;
             let password = document.getElementById("password").value;
@@ -130,8 +130,13 @@ else if(localStorage.length === 2){
                 loginDiv.removeChild(fieldSet)
                 myWelcomePage()
             }
+
+            else {
+                document.body.removeChild(loginDiv);
+                myErrorPage();
+            };
         }
-        
+        /*else if för att återvända till startsidan från inloggningssidan*/
         else if (myBtn.innerHTML === "Logga ut"){
             document.body.removeChild(welcomeDiv)
             myBtn.innerHTML = "Logga in"
@@ -139,13 +144,11 @@ else if(localStorage.length === 2){
             myLoginPage();
             
         }
-        else if (myBtn.innerHTML === "Logga in" && user === correctUser && password === correctPassword){
+        else if (myBtn.innerHTML === "Logga in" && user !== correctUser && password !== correctPassword){
             
-            loginDiv.removeChild(fieldSet);
-            localStorage.setItem("user", user);
-            localStorage.setItem("password", password);
-            console.log("event", user, password);
-            myWelcomePage();
+            document.body.removeChild(loginDiv);
+            localStorage.clear();
+            myErrorPage();
         }
         
         
