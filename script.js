@@ -30,19 +30,19 @@ let welcome = document.createElement("img");
 
 /*Objekt för bilder med attribut*/
 Object.assign(oops,{
-    src: "/Oops.jpg",
+    src: "/Images/Oops.jpg",
     alt: "Oops",
     width: "500",
 });
 
 Object.assign(welcome,{
-    src: "/Welcome.jpg",
+    src: "/Images/Welcome.jpg",
     alt: "Background wallpaper",
     width: "500",
 });
 
 Object.assign(loginBackground,{
-    src: "/background.jpg",
+    src: "/Images/background.jpg",
     alt: "Background wallpaper",
     width: "700",
 });
