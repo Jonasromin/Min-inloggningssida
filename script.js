@@ -2,7 +2,6 @@
 let loginDiv = document.createElement("div");
 let welcomeDiv = document.createElement("div");
 let errorDiv = document.createElement("div");
-let link = document.createElement("a");
 
 loginDiv.id = "loginDiv";
 welcomeDiv.id = "welcomeDiv";
@@ -31,19 +30,19 @@ let welcome = document.createElement("img");
 
 /*Objekt för bilder med attribut*/
 Object.assign(oops,{
-    src: "../Images/Oops.jpg",
+    src: "/Images/Oops.jpg",
     alt: "Oops",
     width: "500",
 });
 
 Object.assign(welcome,{
-    src: "../Images/Welcome.jpg",
+    src: "/Images/Welcome.jpg",
     alt: "Background wallpaper",
     width: "500",
 });
 
 Object.assign(loginBackground,{
-    src: "../Images/background.jpg",
+    src: "/Images/background.jpg",
     alt: "Background wallpaper",
     width: "700",
 });
@@ -132,8 +131,8 @@ else if(localStorage.length === 2){
                 document.body.removeChild(loginDiv);
                 myWelcomePage();
             }
-            /*argument för att visa felmeddelande om inloggning är fel*/
-            else if (myBtn.textContent === "Logga in" && user !== correctUser || password !== correctPassword) {
+            /*annars gå till error sidan*/
+            else {
                 document.body.removeChild(loginDiv);
                 myErrorPage();
             }
