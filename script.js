@@ -2,6 +2,7 @@
 let loginDiv = document.createElement("div");
 let welcomeDiv = document.createElement("div");
 let errorDiv = document.createElement("div");
+let link = document.createElement("a");
 
 loginDiv.id = "loginDiv";
 welcomeDiv.id = "welcomeDiv";
@@ -30,19 +31,19 @@ let welcome = document.createElement("img");
 
 /*Objekt för bilder med attribut*/
 Object.assign(oops,{
-    src: "/Images/Oops.JPG",
+    src: "./Images/Oops.jpg",
     alt: "Oops",
     width: "500",
 });
 
 Object.assign(welcome,{
-    src: "/Images/Welcome.JPG",
+    src: "./Images/Welcome.jpg",
     alt: "Background wallpaper",
     width: "500",
 });
 
 Object.assign(loginBackground,{
-    src: "/Images/background.JPG",
+    src: "./Images/background.jpg",
     alt: "Background wallpaper",
     width: "700",
 });
